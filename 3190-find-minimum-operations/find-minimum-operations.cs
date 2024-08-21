@@ -35,6 +35,31 @@ public class Solution
 {
     public int MinimumOperations(int[] nums)
     {
+        bool flag = true;
+        foreach(var num in nums)
+        {
+            if (num % 3 != 0)
+            {
+                flag = false;
+            }
+        }
 
+        if(flag)
+        {
+            return 0;
+        }
+        else
+        {
+            int count = 0;
+            foreach(var num in nums)
+            {
+                if(num % 3 != 0)
+                {
+                    count += Math.Min(3 - num % 3, num / 3);
+                }
+            }
+
+            return count;
+        }
     }
 }
